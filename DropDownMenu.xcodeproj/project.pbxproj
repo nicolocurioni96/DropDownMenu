@@ -18,6 +18,7 @@
 		A13B2C3227FC2C640007B6A3 /* DropDownMenuAnimationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B2C3127FC2C640007B6A3 /* DropDownMenuAnimationStyle.swift */; };
 		A13B2C3427FC2C740007B6A3 /* DropDownMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B2C3327FC2C740007B6A3 /* DropDownMenuDelegate.swift */; };
 		A13B2C3627FC2C820007B6A3 /* DropDownMenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B2C3527FC2C820007B6A3 /* DropDownMenuState.swift */; };
+		A13B2C3927FC2D900007B6A3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B2C3827FC2D900007B6A3 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		A13B2C3127FC2C640007B6A3 /* DropDownMenuAnimationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenuAnimationStyle.swift; sourceTree = "<group>"; };
 		A13B2C3327FC2C740007B6A3 /* DropDownMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenuDelegate.swift; sourceTree = "<group>"; };
 		A13B2C3527FC2C820007B6A3 /* DropDownMenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenuState.swift; sourceTree = "<group>"; };
+		A13B2C3827FC2D900007B6A3 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				A119570D27FC25C000BEFA15 /* AppDelegate.swift */,
 				A119570F27FC25C000BEFA15 /* SceneDelegate.swift */,
+				A13B2C3727FC2D810007B6A3 /* Extensions */,
 				A13B2C2B27FC2C0A0007B6A3 /* Views */,
 				A13B2C2827FC2B860007B6A3 /* Enums */,
 				A13B2C2627FC29460007B6A3 /* Scenes */,
@@ -120,6 +123,14 @@
 				A13B2C3527FC2C820007B6A3 /* DropDownMenuState.swift */,
 			);
 			path = DropDownMenu;
+			sourceTree = "<group>";
+		};
+		A13B2C3727FC2D810007B6A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A13B2C3827FC2D900007B6A3 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				A13B2C3427FC2C740007B6A3 /* DropDownMenuDelegate.swift in Sources */,
 				A13B2C2E27FC2C2A0007B6A3 /* DropDownMenuDisplayable.swift in Sources */,
 				A13B2C2A27FC2B920007B6A3 /* Image+Enums.swift in Sources */,
+				A13B2C3927FC2D900007B6A3 /* UIView+Extensions.swift in Sources */,
 				A13B2C3227FC2C640007B6A3 /* DropDownMenuAnimationStyle.swift in Sources */,
 				A119571027FC25C000BEFA15 /* SceneDelegate.swift in Sources */,
 				A13B2C3027FC2C520007B6A3 /* DropDownMenu.swift in Sources */,
