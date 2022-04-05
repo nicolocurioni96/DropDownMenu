@@ -45,8 +45,8 @@ class ViewController: UIViewController {
             dropDownMenu.layer.shadowOpacity = 0.8
             dropDownMenu.layer.shadowPath = UIBezierPath(rect: dropDownMenu.layer.bounds).cgPath
             dropDownMenu.dropDownMenuView.clipsToBounds = true
-            dropDownMenu.dropDownMenuView.layer.masksToBounds = true
-            dropDownMenu.dropDownMenuView.layer.shadowColor = UIColor.red.cgColor
+            dropDownMenu.dropDownMenuView.layer.masksToBounds = false
+            dropDownMenu.dropDownMenuView.layer.shadowColor = UIColor.lightGray.cgColor
             dropDownMenu.dropDownMenuView.layer.shadowOffset = CGSize(width: 0, height: 10)
             dropDownMenu.dropDownMenuView.layer.shadowOpacity = 0.6
         }
@@ -59,17 +59,7 @@ class ViewController: UIViewController {
         title = "DropDownMenu"
         view.backgroundColor = UIColor(named: "MainWhiteBG")
         
-        let shadowLayer = CALayer.init()
-        
-        shadowLayer.masksToBounds = true
-        shadowLayer.frame = dropDownMenu.bounds
-        shadowLayer.shadowColor = UIColor.black.cgColor
-        shadowLayer.shadowOpacity = 0.08
-        shadowLayer.shadowRadius = 20
-        shadowLayer.shadowPath = CGPath.init(rect: shadowLayer.bounds, transform: nil)
-        
-        dropDownMenu.layer.insertSublayer(shadowLayer, below: dropDownMenu.layer)
-        
+        dropDownMenu.layer.masksToBounds = false
         dropDownMenu.setTitleColor(.black, for: .normal)
         dropDownMenu.dropDownMenuView.dropDownMenuOptions = ["Option 1", "Option 2", "Option 3"]
         
