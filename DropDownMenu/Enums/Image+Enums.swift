@@ -8,6 +8,6 @@
 import Foundation
 
 public enum ButtonImageName: String, CaseIterable {
-    case arrowTop = "ArrowTop"
-    case arrowBottom = "ArrowBottom"
+    case arrowTop = "ArrowUp"
+    case arrowBottom = "ArrowDown"
 }

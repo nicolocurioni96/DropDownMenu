@@ -35,7 +35,9 @@ class ViewController: UIViewController {
             dropDownMenu.roundCorners(corners: [.allCorners], radius: 5)
             dropDownMenu.backgroundColor = .clear
             dropDownMenu.layer.shadowColor = UIColor.clear.cgColor
+            dropDownMenu.setImage(UIImage(named: "ArrowDown"), for: .normal)
         } else {
+            dropDownMenu.setImage(UIImage(named: "ArrowUp"), for: .normal)
             dropDownMenu.roundCorners(corners: [.topLeft, .topRight], radius: 5)
             dropDownMenu.dropDownMenuView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5)
             dropDownMenu.backgroundColor = .white
@@ -59,6 +61,9 @@ class ViewController: UIViewController {
         title = "DropDownMenu"
         view.backgroundColor = UIColor(named: "MainWhiteBG")
         
+//        dropDownMenu.semanticContentAttribute = .forceRightToLeft
+        dropDownMenu.imageView?.frame.size = CGSize(width: 30, height: 30)
+        dropDownMenu.imageView?.contentMode = .scaleAspectFit
         dropDownMenu.layer.masksToBounds = false
         dropDownMenu.setTitleColor(.black, for: .normal)
         dropDownMenu.dropDownMenuView.dropDownMenuOptions = ["Option 1", "Option 2", "Option 3"]
@@ -78,7 +83,7 @@ class ViewController: UIViewController {
         
         dropDownMenu.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         dropDownMenu.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        dropDownMenu.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        dropDownMenu.widthAnchor.constraint(equalToConstant: 180).isActive = true
         dropDownMenu.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 }

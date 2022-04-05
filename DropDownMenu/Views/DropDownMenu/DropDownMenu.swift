@@ -31,16 +31,26 @@ class DropDownMenu: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        semanticContentAttribute = .forceRightToLeft
+        contentHorizontalAlignment = .right
+        let availableSpace = bounds.inset(by: contentEdgeInsets)
+        let availableWidth = availableSpace.width - imageEdgeInsets.left - (imageView?.frame.width ?? 0) - (titleLabel?.frame.width ?? 0)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: availableWidth / 2)
+    }
+    
     override func didMoveToSuperview() {
         self.superview?.addSubview(dropDownMenuView)
         self.superview?.bringSubviewToFront(dropDownMenuView)
+        
         dropDownMenuView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         dropDownMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         dropDownMenuView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         height = dropDownMenuView.heightAnchor.constraint(equalToConstant: 0)
         self.clipsToBounds = true
     }
-    
     
     // MARK: - Methods
     
