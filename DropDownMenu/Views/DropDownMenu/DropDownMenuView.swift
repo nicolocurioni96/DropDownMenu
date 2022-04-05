@@ -60,6 +60,7 @@ extension DropDownMenuView: UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.text = item
         cell.textLabel?.textColor = .black
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.backgroundColor = UIColor.white
         return cell
     }

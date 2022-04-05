@@ -16,14 +16,14 @@ protocol DropDownMenuDelegate {
 class DropDownMenu: UIButton {
     
     var dropDownMenuView = DropDownMenuView()
-        
+    
     var height = NSLayoutConstraint()
     
     var isOpen = false
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
+        
         setupUI()
     }
     
@@ -64,6 +64,30 @@ class DropDownMenu: UIButton {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        didTriggerOpenMenu()
+    }
+    
+    func dismissDropDownMenu() {
+        isOpen = false
+        NSLayoutConstraint.deactivate([self.height])
+        self.height.constant = 0
+        NSLayoutConstraint.activate([self.height])
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.dropDownMenuView.center.y -= self.dropDownMenuView.frame.height / 2
+            self.dropDownMenuView.layoutIfNeeded()
+        }, completion: nil)
+    }
+}
+
+extension DropDownMenu: DropDownMenuDelegate {
+    func dropDownMenuPressed(string: String) {
+        self.setTitle(string, for: .normal)
+        self.dismissDropDownMenu()
+    }
+}
+
+extension DropDownMenu {
+    func didTriggerOpenMenu() {
         if isOpen == false {
             
             isOpen = true
@@ -94,23 +118,5 @@ class DropDownMenu: UIButton {
                 self.dropDownMenuView.layoutIfNeeded()
             }, completion: nil)
         }
-    }
-    
-    func dismissDropDownMenu() {
-        isOpen = false
-        NSLayoutConstraint.deactivate([self.height])
-        self.height.constant = 0
-        NSLayoutConstraint.activate([self.height])
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            self.dropDownMenuView.center.y -= self.dropDownMenuView.frame.height / 2
-            self.dropDownMenuView.layoutIfNeeded()
-        }, completion: nil)
-    }
-}
-
-extension DropDownMenu: DropDownMenuDelegate {
-    func dropDownMenuPressed(string: String) {
-        self.setTitle(string, for: .normal)
-        self.dismissDropDownMenu()
     }
 }
