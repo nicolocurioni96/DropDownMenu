@@ -8,15 +8,13 @@
 import UIKit
 
 extension UIView {
-    /// Returns the `ParentViewController` for any view.
-    var parentViewController: UIViewController? {
-        var responder: UIResponder? = self
-        while !(responder is UIViewController) {
-            responder = responder?.next
-            if responder == nil {
-                break
-            }
-        }
-        return (responder as? UIViewController)
-    }
+    /// Usage:
+    /// aView.roundCorners(corners: [.topLeft, .topRight], radius: 3.0)
+    /// -
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+         let mask = CAShapeLayer()
+         mask.path = path.cgPath
+         layer.mask = mask
+     }
 }

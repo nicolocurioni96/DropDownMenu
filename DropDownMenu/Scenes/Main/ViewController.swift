@@ -9,16 +9,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var buttonOption: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    var horizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    
+    var dropDownMenu: DropDownMenu = {
+        let menu = DropDownMenu()
+        menu.translatesAutoresizingMaskIntoConstraints = false
+        return menu
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if !dropDownMenu.isOpen {
+            dropDownMenu.roundCorners(corners: [.allCorners], radius: 10)
+            dropDownMenu.backgroundColor = .clear
+        } else {
+            dropDownMenu.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+            dropDownMenu.dropDownMenuView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+            dropDownMenu.backgroundColor = .darkGray
+        }
+        
     }
     
     // MARK: - Methods
@@ -28,33 +49,29 @@ class ViewController: UIViewController {
         title = "DropDownMenu"
         view.backgroundColor = UIColor(named: "MainBG")
         
-        buttonOption.backgroundColor = UIColor(named: "NormalButton")
-        buttonOption.semanticContentAttribute = .forceLeftToRight
-        buttonOption.setTitle("Select option", for: .normal)
-        buttonOption.clipsToBounds = true
-        buttonOption.layer.cornerRadius = 8
-        buttonOption.setTitleColor(.black, for: .normal)
-        buttonOption.layer.shadowColor = UIColor.black.cgColor
-        buttonOption.layer.shadowOffset = CGSize(width: -4, height: 3)
-        buttonOption.layer.shadowOpacity = 0.6
-        buttonOption.addTarget(self, action: #selector(didTapOnSelectOption(_:)), for: .touchUpInside)
+        dropDownMenu.dropDownMenuView.clipsToBounds = true
+        dropDownMenu.dropDownMenuView.layer.masksToBounds = true
+        dropDownMenu.dropDownMenuView.layer.shadowColor = UIColor.black.cgColor
+        dropDownMenu.dropDownMenuView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        dropDownMenu.dropDownMenuView.layer.shadowOpacity = 0.6
+        
+        dropDownMenu.layer.masksToBounds = true
+        dropDownMenu.layer.shadowColor = UIColor.black.cgColor
+        dropDownMenu.layer.shadowOffset = CGSize(width: 2, height: 2)
+        dropDownMenu.layer.shadowOpacity = 0.6
+        dropDownMenu.setTitle("Select Item", for: .normal)
+        dropDownMenu.dropDownMenuView.dropDownMenuOptions = ["Option 1", "Option 2", "Option 3"]
         
         setupConstraints()
     }
     
     private func setupConstraints() {
         
-        [buttonOption].forEach(view.addSubview(_:))
+        [dropDownMenu].forEach(view.addSubview(_:))
         
-        NSLayoutConstraint.activate([
-            buttonOption.heightAnchor.constraint(equalToConstant: 52),
-            buttonOption.widthAnchor.constraint(equalToConstant: 200),
-            buttonOption.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonOption.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
+        dropDownMenu.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        dropDownMenu.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        dropDownMenu.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        dropDownMenu.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-    
-    @objc
-    private func didTapOnSelectOption(_ sender: Any) { }
 }
-
