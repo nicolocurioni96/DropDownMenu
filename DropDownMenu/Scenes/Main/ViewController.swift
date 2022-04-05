@@ -11,9 +11,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupUI()
     }
-
-
+    
+    private func setupUI() {
+        title = "DropDownMenu"
+        view.backgroundColor = UIColor(named: "MainBG")
+    }
 }
 
