@@ -47,7 +47,6 @@ class DropDownMenu: UIButton {
     // Private
     
     private func setupUI() {
-        self.backgroundColor = UIColor.white
         
         dropDownMenuView = DropDownMenuView(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropDownMenuView.delegate = self

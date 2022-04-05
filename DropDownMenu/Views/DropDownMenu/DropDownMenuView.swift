@@ -30,8 +30,7 @@ class DropDownMenuView: UIView {
     // Private
     
     private func setupUI() {
-        tableView.backgroundColor = UIColor.darkGray
-        self.backgroundColor = UIColor.darkGray
+        self.backgroundColor = UIColor.white
         self.tableView.clipsToBounds = true
         
         tableView.delegate = self
@@ -60,7 +59,8 @@ extension DropDownMenuView: UITableViewDelegate, UITableViewDataSource {
         let item = dropDownMenuOptions[indexPath.row]
         
         cell.textLabel?.text = item
-        cell.backgroundColor = UIColor.darkGray
+        cell.textLabel?.textColor = .black
+        cell.backgroundColor = UIColor.white
         return cell
     }
     
